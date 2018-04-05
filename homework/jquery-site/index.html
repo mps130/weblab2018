@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Jquery Zoo</title>
+  <link rel="stylesheet" href="css/master.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="box">
+    <p id="content">Zookeeper: Welcome to the Miami Zoo! Today we will see animals from all across the globe and learn more about the way they live.
+    </p>
+    <a href="#" id="gorilla">Let's go see the gorillas!</a>
+    <p id="option">
+      <a href="#" id="runoption">Run!!!</a> Or
+      <a href="#" id="hideoption">Hide!!!</a>
+      <br><br>
+    </p>
+    <img src="Pics/map.jpg" alt="map" id="mappic">
+    <img src="Pics/banana.jpg" alt="banana" id="bananapic">
+    <img src="Pics/fence.jpg" alt="fence" id="fence">
+    <img src="Pics/danger.jpg" alt="danger" id="danger">
+
+  </div>
+
+  <a href="#" id="monkey">Next!</a>  <a href="#" id="back">Go back!</a>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      $("#monkey").click(function() {
+        // $(".box").removeClass("box-bob")
+        $(".box").addClass("box-monkey");
+        $("#bananapic").show();
+        $("#content").html(
+          "Zookeeper: First we will visit the monkey exhibit! These are brown headed spider monkeys from South America. They like to eat leaves, seeds, nuts, insects, and especially ripe fruit. Click on the banana to feed the monkey.");
+        $("#mappic").attr("src", "Pics/monkey.jpg")
+        $("#fence").hide();
+        $("#option").hide();
+
+        $("#monkey").hide();
+        $("#danger").hide();
+
+
+      })
+
+      $("#bananapic").click(function() {
+        $("#bananapic").hide();
+        $("#fence").hide();
+        $("#content").html("Good job! The monkey seems to be fed.");
+        $("#option").hide();
+        $("#danger").hide();
+        $("#gorilla").show();
+      })
+
+
+
+      $("#gorilla").click(function() {
+        $(".box").addClass("box-monkey");
+        $(".box").addClass("box-gorilla");
+        $("#content").html("Zookeeper: Next we will look at the gorillas. These are silverback gorillas who come from the forests of Africa. Put your mouse over the gorilla to wave at it.");
+        $("#fence").show();
+        $("#bananapic").hide();
+        $("#mappic").hide();
+        $("#option").hide();
+        $("#danger").hide();
+        $("#gorilla").hide();
+
+      })
+
+      $("#fence").hover(function() {
+        $("#bananapic").hide();
+        $("#fence").attr("src", "Pics/angry.jpg")
+        $("#content").html("Zookeeper: Oh no! The gorilla did not like you waving at it and has broken out of its enclosure. What are you going to do?");
+        $("#fence").show();
+        $("#option").show();
+        $("#danger").hide();
+        $("#gorilla").hide();
+
+      })
+
+
+      $("#runoption").click(function() {
+        $(".box").addClass("box-run");
+        $(".box").removeClass("box-monkey");
+        $(".box").removeClass("box-gorilla");
+        $("#content").html("Zookeeper: You can't run from a gorilla! Silverback gorillas can run up to 25 miles per hour. You'll get killed!");
+        $("#fence").hide();
+        $("#bananapic").attr("src", "Pics/angry.jpg");
+        $("#mappic").hide();
+        $("#option").hide();
+        $("#danger").show();
+        $("#back").show();
+
+
+      })
+
+      $("#hideoption").click(function() {
+        $(".box").addClass("box-hide");
+        $(".box").removeClass("box-monkey");
+        $(".box").removeClass("box-gorilla");
+        $("#content").html(
+          "Zookeeper: Good choice! That gorilla would definitely catch you if you ran. We will hide here until the situation is handled. Well after that encounter you probably don’t want to see anymore animals. Thank you for visiting the zoo though!"
+        );
+        $("#fence").hide();
+        $("#mappic").hide();
+        $("#option").hide();
+        $("#danger").show();
+        $("#danger").attr("src", "Pics/thumbsup.jpg");
+        $("#back").hide();
+
+
+      })
+      $("#back").click(function() {
+        $(".box").removeClass("box-run");
+        $(".box").removeClass("box-monkey");
+        $(".box").addClass("box-gorilla");
+        $("#content").html("Zookeeper: That wasn't the right choice. How about we try hiding instead?");
+        $("#option").show();
+        $("#danger").hide();
+        $("#back").hide();
+
+
+
+
+
+      })
+
+
+
+
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

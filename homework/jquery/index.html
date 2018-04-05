@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jquery Demo</title>
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+<div class="box">
+  My box is cool!
+</div>
+
+<a href="#" id="sam">Click Sam!</a> | <a href="#" id="bob">Click Bob!</a> | <a href="#" id="jane">Hide!</a> | <a href="#" id="mary">Show!</a>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+// $(".box").css("background", "blue");
+
+$("#sam").click(function(){
+  $(".box").removeClass("box-bob")
+  $(".box").addClass( "box-big" );
+  $(".box").html("Woohoo you clicked sam!");
+})
+
+$("#bob").click(function(){
+  $(".box").addClass( "box-big");
+  $(".box").addClass("box-bob");
+  $(".box").html("Woohoo you clicked Bob!");
+})
+
+$("#jane").click(function(){
+  $(".box").fadeOut(1000);
+})
+
+$("#mary").click(function(){
+  $(".box").addClass( "box");
+  $(".box").show("box");
+})
+
+
+
+  });
+</script>
+  </body>
+</html>
